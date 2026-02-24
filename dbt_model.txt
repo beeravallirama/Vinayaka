@@ -1,0 +1,24 @@
+dbt project=======
+step -1 create and active  
+virtual environment
+in vs code 
+dbt_venv\Scripts\activate
+
+go to profile.yml file
+chek snowflake connection avaliable not
+dbt_projects:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: WOYNQXP-EI40581
+      user: ANJI
+      password: Ayyappa@123456789
+      role: SYSADMIN
+      warehouse: COMPUTE_WH
+      database: EMP_DB
+      schema: ANALYTICS
+      threads: 4
+=============
+model/staging/yml
+emp_model
