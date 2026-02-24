@@ -1,0 +1,76 @@
+
+reverse string
+s="vijay"
+result = ""
+i=1
+for char in s:
+        print(char,i)
+        i+=1
+        result = char + result
+        print(result)
+--------------------------------------------------------------
+Frequency of chars in string
+s="naveennaveen"
+result = {}
+print(result)
+print("loop started")
+for char in s:
+    print(char, "Letter from ",s)
+    if char not in result:
+        result[char] = 1
+        print(result)
+    else:
+        result[char] += 1
+        print(result)
+print("loop ended")
+print(result)
+-------------------------------------------------------------------------------
+palindrome
+
+
+s="101"
+result = ""
+i=1
+for char in s:
+    #print(char,i)
+    i+=1
+    result = char + result
+print(result)
+if (result == s):
+    print("palin")
+else:
+    print("not palin")
+	
+---------------------------------------------------------------------------------
+factorial
+
+n= 3
+result = 1
+for i in range(1,n+1,1):
+    print(i,result)
+    result *= i
+    
+print(result)
+
+----------------------------------------------------------------------------------
+
+l1 = ['a', 'b', 'c', 'd']
+l2 = ['e', 'f', 'g', 'h']
+l3=[]
+
+for i in range(len(l1)):
+    l3.append(l1[i])
+    l3.append(l2[i])
+print(l3)
+----------------------------------------------------------------------------------
+
+fibonaci series
+a=2
+b=5
+print(a,b,end=" ")
+for i in range(3):
+    
+    a,b = b,a+b
+    
+    print(b,end=" ")
+------------------------------------------------------------------------------------
