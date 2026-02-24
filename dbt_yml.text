@@ -1,0 +1,15 @@
+profile.yml file
+
+dbt_projects:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: WOYNQXP-EI40581
+      user: ANJI
+      password: Ayyappa@123456789
+      role: SYSADMIN
+      warehouse: COMPUTE_WH
+      database: EMP_DB
+      schema: ANALYTICS
+      threads: 4
