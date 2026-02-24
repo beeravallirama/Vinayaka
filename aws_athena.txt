@@ -1,0 +1,36 @@
+Athena
+step1===
+settangs
+query resul location
+step2==
+EDITOR
+WE WRITE QUERIES
+
+https://youtu.be/D0uCI8_opAY?si=ZJRiQYajhjpoFIVZ
+
+step -1
+create DATABASE
+CREATE DATABASE demo_db;
+================
+STEP-2
+CREATE EXTERNAL TABLE demo_db.sales_data (
+    order_id INT,
+    customer STRING,
+    amount DOUBLE,
+    country STRING
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe'
+WITH SERDEPROPERTIES (
+    'serialization.format' = ',',
+    'field.delim' = ','
+)
+LOCATION 's3://ayyappaemp/sales-data/'
+TBLPROPERTIES ('has_encrypted_data'='false');
+===================================================
+SELECT * FROM "demo_db"."sales_data" limit 10;
+
+ALTER TABLE demo_db.sales_data
+SET TBLPROPERTIES ('skip.header.line.count'='1');
+
+select count(order_id) as count_of_orders
+from "demo_db"."sales_data";
