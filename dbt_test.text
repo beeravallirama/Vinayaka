@@ -1,0 +1,39 @@
+step-2
+dbt_project/
+│
+├── models/
+│   ├── staging/
+│   │   ├── emp_model.sql
+│   │   └── emp_model.yml   👈 (we create this)
+│
+├── tests/                  👈 (for singular tests)
+├── dbt_project.yml
+
+step-2
+emp_model.yml
+version: 2
+
+models:
+  - name: emp_model
+    description: Employee model
+    columns:
+      - name: emp_id
+        tests:
+          - not_null
+          - unique
+
+      - name: email
+        tests:
+          - not_null
+
+      - name: dept_id
+        tests:
+          - relationships:
+              to: ref('dept_model')
+              field: dept_id
+
+step-3
+dbt test
+
+step-4
+dbt test --select emp_model
