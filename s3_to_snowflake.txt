@@ -1,0 +1,52 @@
+CREATE DATABASE EMP_DB;
+
+CREATE OR REPLACE TABLE employee (
+    emp_id      INT,
+    name        STRING,
+    dept_id     INT,
+    salary      NUMBER(10,2),
+    hire_date   DATE,
+    email       STRING,
+    city        STRING
+);
+
+CREATE OR REPLACE FILE FORMAT CSV_FF_HEADER
+TYPE = CSV
+SKIP_HEADER = 1
+FIELD_DELIMITER=','
+FIELD_OPTIONALLY_ENCLOSED_BY=''''
+TRIM_SPACE =TRUE;
+
+CREATE OR REPLACE STORAGE INTEGRATION s3_int
+TYPE = EXTERNAL_STAGE
+STORAGE_PROVIDER = S3
+ENABLED = TRUE
+STORAGE_AWS_ROLE_ARN = 'arn:aws:iam::123456789012:role/snowflake-s3-role'
+STORAGE_ALLOWED_LOCATIONS = ('s3://ayyappaemp/raw-009/');
+
+SHOW STORAGE INTEGRATIONS;
+
+CREATE STAGE AWS_EXT_STAGE
+URL = 's3://ayyappaemp/raw-009'
+FILE_FORMAT = CSV_FF_HEADER
+STORAGE_INTEGRATION = s3_int;
+
+DESC INTEGRATION s3_int;
+
+list @AWS_EXT_STAGE;
+
+
+
+
+SHOW FILE FORMATS;
+show stages;
+show storage integration;
+
+copy into employee,
+from @AWS_EXT_STAGE
+ON_ERROR = CONTINUE;
+
+SELECT * FROM EMPLOYEE;
+
+
+
