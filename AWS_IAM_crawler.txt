@@ -1,0 +1,45 @@
+
+https://youtu.be/gfUNDP0QiEQ?si=huY2WCSDJiK_gTEp
+
+STEP-1
+IAM
+STEP-2
+ROLES
+CREATE ROLE
+
+Use case
+Allow an AWS service like EC2, Lambda, or others to perform actions in this account.
+
+Service or use case
+GLUE
+
+Add permissions Info
+AmazonS3ReadOnlyAccess
+AWSGlueServiceRole
+
+role created
+exploring-glue-and-athane
+
+
+once done 
+switch to glue 
+
+
+create crawler
+step-1
+demo-glue-crawler
+
+Choose data sources and classifiers
+adda data source
+S3
+s3://ayyappaemp/sales-data/
+
+Configure security settings
+exploring-glue-and-athane
+
+Set output and scheduling
+Target database
+demo_db
+
+and check 
+crawler creted 1 table
